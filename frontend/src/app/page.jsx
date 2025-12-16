@@ -64,12 +64,15 @@
 //   );
 // }
 
+import React from "react";
+import Image from "next/image";
+import { Hero } from "../components/Hero";
+
 
 export default function HomePage() {
   return (
     <main style={{ padding: "2rem" }}>
-      <h1>Maroon Raccoon</h1>
-      <p>Nocturnal by Nature, Digital by Design.</p>
+      <Hero />
     </main>
   );
 }
