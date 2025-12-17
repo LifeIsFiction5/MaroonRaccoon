@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -8,55 +9,72 @@ export default function Contact() {
     email: "",
     subject: "",
     message: ""
-});
+  });
+
+  // Formspree hook (replace with your form hashid)
+  const [state, handleSubmit] = useForm("xgvggoza");
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value
-    });
+    }));
   };
 
-  const handleSumbit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("thank you for your message!  I will get back to you shortly.");
-    //Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
-  };
+  // If successful, show a nice confirmation state
+  if (state.succeeded) {
+    return (
+      <div style={{ padding: "4rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
+        <h1>Message sent ✅</h1>
+        <p style={{ fontSize: "1.1rem", color: "#666" }}>
+          Thanks — I’ll get back to you shortly.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div style={{ padding: "4rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
       <h1>Contact Us</h1>
       <p style={{ fontSize: "1.1rem", marginBottom: "2rem", color: "#666" }}>
-        You say the word, and we'll get to coding!
-        </p>
+        You say the word, and we&apos;ll get to coding!
+      </p>
 
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+      >
+        {/* Optional: Honeypot anti-spam field */}
+        <input
+          type="text"
+          name="_gotcha"
+          tabIndex="-1"
+          autoComplete="off"
+          style={{ display: "none" }}
+        />
+        {/* Optional: override email subject in what Formspree sends you */}
+        <input type="hidden" name="_subject" value={`Maroon Raccoon: ${formData.subject || "New message"}`} />
 
-      <form onSubmit={handleSumbit} style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
         <div>
-          <label htmlFor="name" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "600"}}>
+          <label htmlFor="name" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "600" }}>
             Name:
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "0.75rem",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
-                fontSize: "1rem"}}
-            />
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            style={{
+              width: "100%",
+              padding: "0.75rem",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              fontSize: "1rem"
+            }}
+          />
+          <ValidationError prefix="Name" field="name" errors={state.errors} />
         </div>
 
         <div>
@@ -66,7 +84,7 @@ export default function Contact() {
           <input
             type="email"
             id="email"
-            name="email"
+            name="_replyto"
             required
             value={formData.email}
             onChange={handleChange}
@@ -78,6 +96,7 @@ export default function Contact() {
               fontSize: "1rem"
             }}
           />
+          <ValidationError prefix="Email" field="_replyto" errors={state.errors} />
         </div>
 
         <div>
@@ -120,10 +139,12 @@ export default function Contact() {
               resize: "vertical"
             }}
           />
+          <ValidationError prefix="Message" field="message" errors={state.errors} />
         </div>
 
         <button
           type="submit"
+          disabled={state.submitting}
           style={{
             background: "#530000ff",
             color: "white",
@@ -131,12 +152,16 @@ export default function Contact() {
             border: "none",
             borderRadius: "5px",
             fontSize: "1.1rem",
-            cursor: "pointer",
+            cursor: state.submitting ? "not-allowed" : "pointer",
+            opacity: state.submitting ? 0.7 : 1,
             alignSelf: "flex-start"
           }}
         >
-          Send Message
+          {state.submitting ? "Sending..." : "Send Message"}
         </button>
+
+        {/* General (non-field-specific) errors */}
+        <ValidationError errors={state.errors} />
       </form>
     </div>
   );
