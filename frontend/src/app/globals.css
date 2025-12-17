@@ -52,13 +52,16 @@ strong, b {
 
 /* Link styles */
 a {
-  color: var(--link-color, #b80c00);
+  color: var(--link-color, #e30f00);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.4s ease-in-out;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  display: inline-block;
 }
 
 a:hover {
-  color: var(--link-hover, #bb0101);
+  color: var(--link-hover, #dadada);
   text-decoration: underline;
   background-color: rgba(187, 1, 1, 0.1);
   box-shadow: 0 0 20px rgba(187, 1, 1, 0.3),
@@ -71,9 +74,34 @@ a:visited {
 }
 
 a:active {
-  color: #530000;
+  color: #970000;
 }
 
+/* Navbar specific Link styles */
+nav a {
+  padding: 0;
+  background-color: transparent !important;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: transparent !important;
+  box-shadow: none;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+               0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Navbar logo glow effect */
+.navbar-logo {
+  transition: filter 0.4s ease-in-out;
+}
+
+.navbar-logo:hover {
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7))
+          drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}
 
 
 /* Heading styles */
