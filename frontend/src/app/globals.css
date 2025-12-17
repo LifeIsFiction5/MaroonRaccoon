@@ -21,6 +21,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -46,8 +50,31 @@ strong, b {
   font-weight: 700; /* Bold for <strong> and <b> tags */
 }
 
-/* h1, h2, h3, h4, h5, h6 {
-  font-weight: 600; /* Semi-bold for headings */
+/* Link styles */
+a {
+  color: var(--link-color, #b80c00);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover, #bb0101);
+  text-decoration: underline;
+  background-color: rgba(187, 1, 1, 0.1);
+  box-shadow: 0 0 20px rgba(187, 1, 1, 0.3),
+              0 0 40px rgba(187, 1, 1, 0.15);
+}
+
+a:visited {
+  color: var(--link-color, #b90c00);
+  opacity: 0.8;
+}
+
+a:active {
+  color: #530000;
+}
+
+
 
 /* Heading styles */
 h1 {
