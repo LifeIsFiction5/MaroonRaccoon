@@ -12,6 +12,7 @@ export function Hero() {
           <p style={{ fontSize: "1.2rem", marginBottom: "2rem" }}>
             Professional web development services and creative solutions for your business needs.
           </p>
+          <Link href="/contact" passHref>
           <button
             style={{
               background: "#530000ff",
@@ -25,6 +26,7 @@ export function Hero() {
           >
             Get Started
           </button>
+          </Link>
         </div>
         <div className="hero-image">
           <Image
