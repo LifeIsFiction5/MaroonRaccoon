@@ -60,12 +60,14 @@ a {
   display: inline-block;
 }
 
-a:hover {
-  color: var(--link-hover, #dadada);
-  text-decoration: underline;
-  background-color: rgba(187, 1, 1, 0.1);
-  box-shadow: 0 0 20px rgba(187, 1, 1, 0.3),
-              0 0 40px rgba(187, 1, 1, 0.15);
+@media (hover: hover) {
+  a:hover {
+    color: var(--link-hover, #dadada);
+    text-decoration: underline;
+    background-color: rgba(187, 1, 1, 0.1);
+    box-shadow: 0 0 20px rgba(187, 1, 1, 0.3),
+                0 0 40px rgba(187, 1, 1, 0.15);
+  }
 }
 
 a:visited {
@@ -83,24 +85,39 @@ nav a {
   background-color: transparent !important;
   color: #ffffff;
   text-decoration: none;
+  font-family: "Bahnschrift", "Inter", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
-nav a:hover {
-  background-color: transparent !important;
-  box-shadow: none;
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-               0 0 20px rgba(255, 255, 255, 0.3);
+/* Hover effects for devices with hover capability (desktop) */
+@media (hover: hover) {
+  nav a:hover {
+    background-color: transparent !important;
+    box-shadow: none;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  .navbar-logo:hover {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7))
+            drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+  }
+}
+
+/* Active states for touch devices */
+nav a:active {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.navbar-logo:active {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
 }
 
 /* Navbar logo glow effect */
 .navbar-logo {
   transition: filter 0.4s ease-in-out;
-}
-
-.navbar-logo:hover {
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7))
-          drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
 }
 
 
