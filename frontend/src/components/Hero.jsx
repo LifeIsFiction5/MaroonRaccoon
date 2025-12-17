@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export function Hero() {
+export default function Hero() {
   return (
     <section style={{ padding: "4rem 2rem" }}>
       <div className="hero-container">

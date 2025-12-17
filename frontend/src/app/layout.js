@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <header style={{ padding: "1rem 2rem", borderBottom: "1px solid #333" }}>
-          <nav style={{ display: "flex", gap: "1rem" }}>
+          <nav style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
             <Link href="/" style={{ display: "flex", alignItems: "center"}}>
               <Image
                 src="/MaroonRaccoonLogo.png"
@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
                  }}
               />
             </Link>
+            <Link href="/#about">About</Link>
             <Link href="/services">Services</Link>
             <Link href="/projects">Projects</Link>
             <Link href="/contact">Contact</Link>
