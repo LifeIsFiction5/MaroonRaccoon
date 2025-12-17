@@ -15,9 +15,13 @@ export default function Contact() {
   const [state, handleSubmit] = useForm("xgvggoza");
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    // Handle the _replyto field specially
+    const fieldName = name === "_replyto" ? "email" : name;
+    
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [fieldName]: value
     }));
   };
 
@@ -27,7 +31,7 @@ export default function Contact() {
       <div style={{ padding: "4rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
         <h1>Message sent ✅</h1>
         <p style={{ fontSize: "1.1rem", color: "#666" }}>
-          Thanks — I’ll get back to you shortly.
+          Thanks — I'll get back to you shortly.
         </p>
       </div>
     );
@@ -37,7 +41,7 @@ export default function Contact() {
     <div style={{ padding: "4rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
       <h1>Contact Us</h1>
       <p style={{ fontSize: "1.1rem", marginBottom: "2rem", color: "#666" }}>
-        You say the word, and we&apos;ll get to coding!
+        You say the word, and I'll get to coding!
       </p>
 
       <form
