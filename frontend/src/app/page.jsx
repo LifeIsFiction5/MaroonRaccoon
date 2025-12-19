@@ -1,5 +1,5 @@
 "use client";
-import Hero from "../components/Hero";
+import HomeHero from "../components/HomeHero";
 import AboutSection from "../components/AboutSection";
 import RevealMotion from "../components/RevealMotion";
 import HowItWorks from "../components/HowItWorks";
@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <main style={{ padding: "2rem" }}>
       <section>
-      <Hero />
+      <HomeHero />
       </section>
       <RevealMotion>
       <section style={{ padding: "2rem" }} id="about">

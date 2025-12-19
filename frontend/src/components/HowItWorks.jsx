@@ -32,7 +32,7 @@ export default function HowItWorks() {
 
     return (
         <div style={{maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
-            <h1>How It Works</h1>
+            <h1 >How It Works</h1>
             <h2 style={{color: "#ffffffff", marginBottom: "2rem" }}>
                 Clear steps.  No confusion.  Just great websites.
             </h2>
