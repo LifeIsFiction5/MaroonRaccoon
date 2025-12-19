@@ -32,8 +32,8 @@ export default function Hero() {
           <Image
             src="/MaroonRaccoonLogo.png"
             alt="Maroon Raccoon Logo"
-            width={400}
-            height={400}
+            width={600}
+            height={600}
             loading="eager"
             priority
             style={{ maxWidth: "100%", height: "auto", width: "auto" }}

@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #2d2a27;
+  --foreground: #36332f;
 }
 
 @theme inline {
@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #292724;
+    --background: #423d38;
     --foreground: #ededed;
     --link-color: #780000;
     --link-hover: #bb0101;
@@ -65,8 +65,8 @@ a {
     color: var(--link-hover, #dadada);
     text-decoration: underline;
     background-color: rgba(187, 1, 1, 0.1);
-    box-shadow: 0 0 20px rgba(187, 1, 1, 0.3),
-                0 0 40px rgba(187, 1, 1, 0.15);
+    box-shadow: 0 0 5px rgba(187, 1, 1, 0.3),
+                0 0 10px rgba(187, 1, 1, 0.15);
   }
 }
 
