@@ -1,7 +1,7 @@
 export default function AboutSection() {
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
-      <h1>About Maroon Raccoon</h1>
+      <h1>About<span style={{color:"#610000ff", textShadow: "0 0 0.5px #e9e9e9ff, 0 0 10px #d1d1d1ff"}}> Maroon Raccoon</span></h1>
 
       <p>
         Hi, I’m Jake — the founder of Maroon Raccoon. I build clean, modern websites

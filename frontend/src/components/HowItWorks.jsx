@@ -33,7 +33,7 @@ export default function HowItWorks() {
     return (
         <div style={{maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
             <h1>How It Works</h1>
-            <h2 style={{color: "#8b0000ff", marginBottom: "2rem" }}>
+            <h2 style={{color: "#ffffffff", marginBottom: "2rem" }}>
                 Clear steps.  No confusion.  Just great websites.
             </h2>
 
@@ -49,10 +49,10 @@ export default function HowItWorks() {
                     <div
                         key={steps.title}
                         style={{
-                            border: "1px solid #ddd",
+                            border: "1px solid #9e9e9eff",
                             borderRadius: "12px",
                             padding: "1.25rem",
-                            background: "white"
+                            background: "transparent",
                         }}
                     >
                         <div style={{ fontWeight: 700, marginBottom: "0.5rem" }}>
@@ -62,14 +62,14 @@ export default function HowItWorks() {
                         <Image
                             src={steps.img}
                             alt={steps.alt}
-                            width={220}
-                            height={220}
+                            width={400}
+                            height={400}
                             className="hitw-img"
                             priority={index=== 0}
                             />
 
 
-                            <div style={{ color: "#444", lineHeight: "1.5" }}>{steps.text}</div>
+                            <div style={{ color: "#dadadaff", lineHeight: "1.5" }}>{steps.text}</div>
                         </div>
                     ))}
                 </div>
