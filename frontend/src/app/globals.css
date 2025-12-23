@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #36332f;
+  --background: #423d38;
+  --foreground: #ededed;
+  --link-color: #780000;
+  --link-hover: #bb0101;
 }
 
 @theme inline {
@@ -10,15 +12,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #423d38;
-    --foreground: #ededed;
-    --link-color: #780000;
-    --link-hover: #bb0101;
-  }
 }
 
 html {
@@ -30,6 +23,13 @@ body {
   color: var(--foreground);
   font-family: "Bahnschrift", "Inter", system-ui, sans-serif;
   font-weight: 300;
+}
+
+/* Global max-width constraint for ultra-wide screens */
+main {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Font weight utilities */
@@ -247,4 +247,16 @@ h6 {
   .hitw-card {
     flex: initial;
   }
+}
+
+/* Packet typing image */
+.packet-img {
+  display: block;
+  max-width: 600px;
+  height: auto;
+  padding: 18px;
+  margin: 0 auto 1rem;
+  transform-origin: 50% 85%;
+  display: block;
+  animation: packetBreath 3.6s ease-in-out infinite;
 }
