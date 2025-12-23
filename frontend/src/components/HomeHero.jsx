@@ -12,20 +12,8 @@ export default function Hero() {
           <p style={{ fontSize: "1.2rem", marginBottom: "2rem" }}>
             Professional web development services and creative solutions for your business needs.
           </p>
-          <Link href="/contact" passHref>
-          <button
-            style={{
-              background: "#530000ff",
-              color: "white",
-              padding: "1rem 2rem",
-              border: "none",
-              borderRadius: "5px",
-              fontSize: "1.1rem",
-              cursor: "pointer",
-            }}
-          >
+          <Link href="/contact" passHref className="cta-button">
             Get Started
-          </button>
           </Link>
         </div>
         <div className="hero-image">
@@ -36,6 +24,7 @@ export default function Hero() {
             height={600}
             loading="eager"
             priority
+            className="hero-logo"
             style={{ maxWidth: "100%", height: "auto", width: "auto" }}
           />
         </div>
