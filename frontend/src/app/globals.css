@@ -260,3 +260,107 @@ h6 {
   display: block;
   animation: packetBreath 3.6s ease-in-out infinite;
 }
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem auto;
+  max-width: 1200px;
+}
+
+/* Project Card */
+.project-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.20);
+}
+
+/* Project Status Badge */
+.project-status-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #780000, #bb0101);
+  color: #ffffff;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(120, 0, 0, 0.4);
+}
+
+/* Project Title */
+.project-title {
+  margin-bottom: 1rem;
+  color: #ededed;
+}
+
+/* Project Description */
+.project-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  min-height: 60px;
+}
+
+/* Project Timeline */
+.project-timeline {
+  font-size: 0.9rem;
+  color: rgba(237, 237, 237, 0.7);
+  font-style: italic;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(180deg, rgba(120, 0, 0, 0.15), rgba(187, 1, 1, 0.08));
+  border-radius: 16px;
+  border: 1px solid rgba(120, 0, 0, 0.3);
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #780000, #bb0101);
+  color: #ffffff !important;
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(120, 0, 0, 0.4);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(187, 1, 1, 0.5);
+  background: linear-gradient(135deg, #bb0101, #e30f00) !important;
+}
+
+/* Mobile responsive for projects grid */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .cta-section {
+    margin-top: 3rem;
+    padding: 2rem 1rem;
+  }
+}
