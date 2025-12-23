@@ -1,8 +1,15 @@
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 export default function HowItWorks() {
+    // STATE: Which card index are we showing? (0, 1, 2, or 3)
+    const [activeIndex, setActiveIndex] = useState(0);
+    
+    // STATE: Did the user manually interact? (stops auto-play)
+    const [isPaused, setIsPaused] = useState(false);
+
     const steps = [
         {
             title: "Quick Call",
@@ -30,54 +37,106 @@ export default function HowItWorks() {
         }
     ];
 
+    useEffect(() => {
+        if (isPaused) return;
+
+        const timer = setInterval(() => {
+            setActiveIndex((current) => {
+                return current === steps.length - 1 ? 0 : current + 1;
+            });
+        }, 4000);
+
+        return () => clearInterval(timer);
+    }, [isPaused, steps.length]);
+
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
+
+
+    const handleTouchStart = (e) => {
+        setTouchStart(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        if (touchStart - touchEnd > 75) {
+            setActiveIndex((current) => 
+                current === steps.length - 1 ? 0 : current + 1
+            );
+            setIsPaused(true); // User took control, pause auto-play
+        }
+
+        // Swipe right (previous card)
+        if (touchStart - touchEnd < -75) {
+            setActiveIndex((current) => 
+                current === 0 ? steps.length - 1 : current - 1
+            );
+            setIsPaused(true);
+        }
+    };
+
     return (
         <div style={{maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
-            <h1 >How It Works</h1>
+            <h1>How It Works</h1>
             <h2 style={{color: "#ffffffff", marginBottom: "2rem" }}>
-                Clear steps.  No confusion.  Just great websites.
+                Clear steps. No confusion. Just great websites.
             </h2>
 
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                    gap: "1rem",
-                    textAlign: "left"
-                }}
+            {/* CAROUSEL CONTAINER */}
+            <div 
+                className="carousel-container"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
             >
-                {steps.map((steps, index) => (
+                {steps.map((step, index) => (
                     <div
-                        key={steps.title}
-                        style={{
-                            border: "1px solid #9e9e9eff",
-                            borderRadius: "12px",
-                            padding: "1.25rem",
-                            background: "transparent",
-                        }}
+                        key={step.title}
+                        className={`carousel-card ${index === activeIndex ? 'active' : ''}`}
                     >
-                        <div style={{ fontWeight: 700, marginBottom: "0.5rem" }}>
-                            {index + 1}. {steps.title}
+                        <div style={{ fontWeight: 700, marginBottom: "1rem", fontSize: "1.5rem" }}>
+                            {index + 1}. {step.title}
                         </div>
 
                         <Image
-                            src={steps.img}
-                            alt={steps.alt}
+                            src={step.img}
+                            alt={step.alt}
                             width={400}
                             height={400}
                             className="hitw-img"
-                            priority={index=== 0}
-                            />
+                            priority={index === 0}
+                        />
 
-
-                            <div style={{ color: "#dadadaff", lineHeight: "1.5" }}>{steps.text}</div>
+                        <div style={{ color: "#dadadaff", lineHeight: "1.6", fontSize: "1.1rem", marginTop: "1rem" }}>
+                            {step.text}
                         </div>
-                    ))}
-                </div>
-                <div style={{ marginTop: "1.5rem"}}>
-                    <Link href="/contact" style={{ textDecoration: "underline" }}>
-                    Ready to get started? Contact me →
-                    </Link>
-                </div>
+                    </div>
+                ))}
             </div>
-        );
-    }
+
+            {/* NAVIGATION DOTS */}
+            <div className="carousel-dots">
+                {steps.map((_, index) => (
+                    <button
+                        key={index}
+                        className={`carousel-dot ${index === activeIndex ? 'active' : ''}`}
+                        onClick={() => {
+                            setActiveIndex(index);
+                            setIsPaused(true); // User clicked, pause auto-play
+                        }}
+                        aria-label={`Go to step ${index + 1}`}
+                    />
+                ))}
+            </div>
+
+            <div style={{ marginTop: "2rem"}}>
+                <Link href="/contact" style={{ textDecoration: "underline" }}>
+                    Ready to get started? Contact me →
+                </Link>
+            </div>
+        </div>
+    );
+}
