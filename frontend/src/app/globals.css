@@ -492,3 +492,180 @@ h6 {
             drop-shadow(0 0 90px rgba(227, 15, 0, 0.5));
   }
 }
+
+/* ========================================
+   SERVICES PAGE STYLES
+   ======================================== */
+
+/* Services Grid - Same pattern as projects */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem auto;
+  max-width: 1200px;
+}
+
+/* Service Card - Glassmorphic with hover lift */
+.service-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  text-align: left; /* Override center from parent */
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.20);
+}
+
+/* Service Title */
+.service-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #ededed;
+  font-size: 1.5rem;
+}
+
+/* Service Description */
+.service-description {
+  color: #c8c8c8ff;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Service Features List */
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #c8c8c8ff;
+}
+
+.service-features li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+/* Custom checkmark bullet */
+.service-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #bb0101;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Services CTA Section */
+.services-cta {
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(180deg, rgba(120, 0, 0, 0.15), rgba(187, 1, 1, 0.08));
+  border-radius: 16px;
+  border: 1px solid rgba(120, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Mobile responsive for services */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .services-cta {
+    margin-top: 3rem;
+    padding: 2rem 1rem;
+  }
+}
+
+/* ========================================
+   PAGE HERO STYLES
+   ======================================== */
+
+/* Container: Flexbox layout for text + image */
+.page-hero-container {
+  display: flex;
+  align-items: center;     /* Vertically center items */
+  justify-content: space-between; /* Space between text and image */
+  gap: 3rem;               /* Space between text and image */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Text content on the left */
+.page-hero-text {
+  flex: 1;                 /* Takes available space */
+  min-width: 0;            /* Prevents flex overflow */
+}
+
+/* Image on the right */
+.page-hero-image {
+  flex-shrink: 0;          /* Prevents image from shrinking */
+  max-width: 400px;        /* Limits image size */
+}
+
+.page-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.4s ease;                    /* Smooth transition */
+  filter: drop-shadow(0 0 0px rgba(120, 0, 0, 0)); /* Start with no glow */
+  cursor: pointer;                              /* Show it's interactive */
+}
+
+/* Desktop hover: Red glow effect */
+@media (hover: hover) {
+  .page-hero-image img:hover {
+    transform: scale(1.05) rotate(2deg);        /* Slightly grow and tilt */
+    filter: drop-shadow(0 0 25px rgba(187, 1, 1, 0.8))
+            drop-shadow(0 0 50px rgba(120, 0, 0, 0.5))
+            drop-shadow(0 0 75px rgba(227, 15, 0, 0.3));
+    animation: pageHeroGlowPulse 2s ease-in-out infinite; /* Pulsing glow */
+  }
+}
+
+/* Mobile/touch: Same effect on tap */
+.page-hero-image img:active {
+  transform: scale(1.05) rotate(2deg);
+  filter: drop-shadow(0 0 25px rgba(187, 1, 1, 0.8))
+          drop-shadow(0 0 50px rgba(120, 0, 0, 0.5))
+          drop-shadow(0 0 75px rgba(227, 15, 0, 0.3));
+}
+
+/* Pulsing glow animation for PageHero image */
+@keyframes pageHeroGlowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 25px rgba(187, 1, 1, 0.8))
+            drop-shadow(0 0 50px rgba(120, 0, 0, 0.5))
+            drop-shadow(0 0 75px rgba(227, 15, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(187, 1, 1, 1))
+            drop-shadow(0 0 60px rgba(120, 0, 0, 0.7))
+            drop-shadow(0 0 90px rgba(227, 15, 0, 0.5));
+  }
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 768px) {
+  .page-hero-container {
+    flex-direction: column; /* Stack text above image */
+    text-align: center;     /* Center text on mobile */
+    gap: 2rem;
+  }
+  
+  .page-hero-image {
+    order: -1;              /* Move image to top on mobile */
+    max-width: 300px;       /* Smaller on mobile */
+  }
+}

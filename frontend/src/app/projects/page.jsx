@@ -1,3 +1,5 @@
+import PageHero from "@/components/PageHero";
+
 export default function ProjectsPage() {
   const projects = [
     {
@@ -22,27 +24,14 @@ export default function ProjectsPage() {
 
   return (
     <main style={{ padding: "2rem" }}>
-      <img
-        className="packet-img"
-        src="/PacketTyping.png"
-        alt="Packet typing on a laptop"
-        loading="lazy"
-      />
-
       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-        <span style={{color:"#610000ff", textShadow: "0 0 0.5px #e9e9e9ff, 0 0 10px #d1d1d1ff"}}>
-          <h1>Projects</h1>
-        </span>
-        <p style={{ 
-          fontSize: "1.2rem", 
-          marginTop: "1rem", 
-          maxWidth: "700px", 
-          marginLeft: "auto", 
-          marginRight: "auto",
-          opacity: "0.9"
-        }}>
-          Bringing creative visions to life through thoughtful design and development
-        </p>
+        <PageHero
+          title="Projects"
+          subtitle="Bringing creative visions to life through thoughtful design and development."
+          image="/PacketTyping.png"
+          imageAlt="Packet typing on a laptop"
+          imageSize="600px"
+        />
       </div>
 
       <div className="projects-grid">
