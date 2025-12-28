@@ -40,7 +40,7 @@ export default function Contact() {
   return (
     <div style={{ padding: "4rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
       <h1>Contact Us</h1>
-      <p style={{ fontSize: "1.1rem", marginBottom: "2rem", color: "#666" }}>
+      <p style={{ fontSize: "1.1rem", marginBottom: "2rem", color: "#f5f5f5ff" }}>
         You say the word, and I'll get to coding!
       </p>
 
@@ -149,13 +149,8 @@ export default function Contact() {
         <button
           type="submit"
           disabled={state.submitting}
+          className="cta-button"
           style={{
-            background: "#530000ff",
-            color: "white",
-            padding: "1rem 2rem",
-            border: "none",
-            borderRadius: "5px",
-            fontSize: "1.1rem",
             cursor: state.submitting ? "not-allowed" : "pointer",
             opacity: state.submitting ? 0.7 : 1,
             alignSelf: "flex-start"
