@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #423d38;
+  --background: #534a40;
   --foreground: #ededed;
-  --link-color: #780000;
+  --link-color: #950000;
   --link-hover: #bb0101;
 }
 
@@ -52,7 +52,7 @@ strong, b {
 
 /* Link styles */
 a {
-  color: var(--link-color, #e30f00);
+  color: var(--link-color, #970000);
   text-decoration: none;
   transition: all 0.4s ease-in-out;
   padding: 0.2rem 0.4rem;
@@ -71,7 +71,7 @@ a {
 }
 
 a:visited {
-  color: var(--link-color, #b90c00);
+  color: var(--link-color, #696969);
   opacity: 0.8;
 }
 
@@ -79,11 +79,42 @@ a:active {
   color: #970000;
 }
 
+/* ========================================
+   NAVBAR STYLES
+   ======================================== */
+
+/* Navbar container with gradient shadow */
+.navbar {
+  padding: 1rem 2rem 2rem 2rem;  /* top right bottom left */
+  position: relative;
+  background: var(--background);
+  z-index: 100;
+}
+
+/* Gradient shadow effect below navbar */
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),    /* Darker at top (navbar edge) */
+    rgba(0, 0, 0, 0.15),   /* Medium */
+    rgba(0, 0, 0, 0)       /* Transparent at bottom */
+  );
+  pointer-events: none;    /* Allow clicks to pass through */
+  z-index: -1;             /* Behind navbar content */
+}
+
 /* Navbar specific Link styles */
-nav a {
+nav a,
+nav a:visited {
   padding: 0;
   background-color: transparent !important;
-  color: #ffffff;
+  color: #f5f5f5;
   text-decoration: none;
   font-family: "Bahnschrift", "Inter", system-ui, sans-serif;
   font-weight: 500;
@@ -96,6 +127,7 @@ nav a {
     background-color: transparent !important;
     box-shadow: none;
     color: #ffffff;
+    text-decoration: none;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
                  0 0 20px rgba(255, 255, 255, 0.3);
   }
@@ -308,7 +340,7 @@ h6 {
 
 /* Active Dot (filled) */
 .carousel-dot.active {
-  background: linear-gradient(135deg, #780000, #bb0101);
+  background: linear-gradient(135deg, #950000, #bb0101);
   border-color: #bb0101;
   transform: scale(1.3);
 }
@@ -378,7 +410,7 @@ h6 {
 /* Project Status Badge */
 .project-status-badge {
   display: inline-block;
-  background: linear-gradient(135deg, #780000, #bb0101);
+  background: linear-gradient(135deg, #950000, #bb0101);
   color: #ffffff;
   padding: 0.4rem 1rem;
   border-radius: 20px;
@@ -423,7 +455,7 @@ h6 {
 /* CTA Button */
 .cta-button {
   display: inline-block;
-  background: linear-gradient(135deg, #780000, #bb0101);
+  background: linear-gradient(135deg, #950000, #bb0101);
   color: #ffffff !important;
   padding: 1rem 2.5rem;
   border-radius: 8px;

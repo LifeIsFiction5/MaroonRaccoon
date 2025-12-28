@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header style={{ padding: "1rem 2rem", borderBottom: "1px solid #333" }}>
+        <header className="navbar">
           <nav style={{ display: "flex", gap: "1rem", alignItems: "center", justifyContent: "center" }}>
             <Link href="/" style={{ display: "flex", alignItems: "center"}}>
               <Image
