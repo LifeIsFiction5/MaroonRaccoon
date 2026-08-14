@@ -18,7 +18,7 @@ export default function Contact() {
     const { name, value } = e.target;
     // Handle the _replyto field specially
     const fieldName = name === "_replyto" ? "email" : name;
-    
+
     setFormData((prev) => ({
       ...prev,
       [fieldName]: value
@@ -28,20 +28,26 @@ export default function Contact() {
   // If successful, show a nice confirmation state
   if (state.succeeded) {
     return (
-      <div style={{ padding: "4rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
-        <h1>Message sent ✅</h1>
-        <p style={{ fontSize: "1.1rem", color: "#666" }}>
-          Thanks — I'll get back to you shortly.
+      <main style={{ padding: "6rem 2rem", maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
+        <span className="eyebrow">Message sent</span>
+        <h1>
+          Thanks — talk <span className="accent">soon.</span>
+        </h1>
+        <p style={{ fontSize: "1.15rem", color: "var(--text-muted)" }}>
+          Your message is in my inbox and I&apos;ll get back to you shortly.
         </p>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div style={{ padding: "4rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <h1>Contact Us</h1>
-      <p style={{ fontSize: "1.1rem", marginBottom: "2rem", color: "#f5f5f5ff" }}>
-        You say the word, and I'll get to coding!
+    <main style={{ padding: "4rem 2rem", maxWidth: "700px", margin: "0 auto" }}>
+      <span className="eyebrow">Contact</span>
+      <h1>
+        Let&apos;s build <span className="accent">something.</span>
+      </h1>
+      <p style={{ fontSize: "1.15rem", marginBottom: "2.5rem", color: "var(--text-muted)" }}>
+        Tell me about your project — you say the word, and I&apos;ll get to coding.
       </p>
 
       <form
@@ -59,89 +65,56 @@ export default function Contact() {
         {/* Optional: override email subject in what Formspree sends you */}
         <input type="hidden" name="_subject" value={`Maroon Raccoon: ${formData.subject || "New message"}`} />
 
-        <div>
-          <label htmlFor="name" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "600" }}>
-            Name:
-          </label>
+        <div className="form-field">
+          <label htmlFor="name">Name *</label>
           <input
             type="text"
             id="name"
             name="name"
             required
+            placeholder="Your name"
             value={formData.name}
             onChange={handleChange}
-            style={{
-              width: "100%",
-              padding: "0.75rem",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-              fontSize: "1rem"
-            }}
           />
           <ValidationError prefix="Name" field="name" errors={state.errors} />
         </div>
 
-        <div>
-          <label htmlFor="email" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "600" }}>
-            Email *
-          </label>
+        <div className="form-field">
+          <label htmlFor="email">Email *</label>
           <input
             type="email"
             id="email"
             name="_replyto"
             required
+            placeholder="you@example.com"
             value={formData.email}
             onChange={handleChange}
-            style={{
-              width: "100%",
-              padding: "0.75rem",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              fontSize: "1rem"
-            }}
           />
           <ValidationError prefix="Email" field="_replyto" errors={state.errors} />
         </div>
 
-        <div>
-          <label htmlFor="subject" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "600" }}>
-            Subject
-          </label>
+        <div className="form-field">
+          <label htmlFor="subject">Subject</label>
           <input
             type="text"
             id="subject"
             name="subject"
+            placeholder="What's this about?"
             value={formData.subject}
             onChange={handleChange}
-            style={{
-              width: "100%",
-              padding: "0.75rem",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              fontSize: "1rem"
-            }}
           />
         </div>
 
-        <div>
-          <label htmlFor="message" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "600" }}>
-            Message *
-          </label>
+        <div className="form-field">
+          <label htmlFor="message">Message *</label>
           <textarea
             id="message"
             name="message"
             required
             rows="6"
+            placeholder="Tell me about your project, timeline, and goals…"
             value={formData.message}
             onChange={handleChange}
-            style={{
-              width: "100%",
-              padding: "0.75rem",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              fontSize: "1rem",
-              resize: "vertical"
-            }}
           />
           <ValidationError prefix="Message" field="message" errors={state.errors} />
         </div>
@@ -162,6 +135,6 @@ export default function Contact() {
         {/* General (non-field-specific) errors */}
         <ValidationError errors={state.errors} />
       </form>
-    </div>
+    </main>
   );
 }

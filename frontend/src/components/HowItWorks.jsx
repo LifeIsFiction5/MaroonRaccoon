@@ -80,10 +80,12 @@ export default function HowItWorks() {
 
     return (
         <div style={{maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
-            <h1>How It Works</h1>
-            <h2 style={{color: "#ffffffff", marginBottom: "2rem" }}>
-                Clear steps. No confusion. Just great websites.
-            </h2>
+            <div className="section-head">
+                <span className="eyebrow">The process</span>
+                <h2>How it works</h2>
+                <p>Clear steps. No confusion. Just great websites.</p>
+                <div className="tail-divider" aria-hidden="true" />
+            </div>
 
             {/* CAROUSEL CONTAINER */}
             <div 
@@ -97,8 +99,8 @@ export default function HowItWorks() {
                         key={step.title}
                         className={`carousel-card ${index === activeIndex ? 'active' : ''}`}
                     >
-                        <div style={{ fontWeight: 700, marginBottom: "1rem", fontSize: "1.5rem" }}>
-                            {index + 1}. {step.title}
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, marginBottom: "1rem", fontSize: "1.4rem", fontFamily: "var(--font-heading)" }}>
+                            <span className="step-number">{index + 1}</span> {step.title}
                         </div>
 
                         <Image
@@ -110,7 +112,7 @@ export default function HowItWorks() {
                             priority={index === 0}
                         />
 
-                        <div style={{ color: "#dadadaff", lineHeight: "1.6", fontSize: "1.1rem", marginTop: "1rem" }}>
+                        <div style={{ color: "var(--text-muted)", lineHeight: "1.6", fontSize: "1.1rem", marginTop: "1rem" }}>
                             {step.text}
                         </div>
                     </div>

@@ -1,6 +1,19 @@
 import "./globals.css";
-import Link from "next/link";
-import Image from "next/image";
+import { Inter, Space_Grotesk } from "next/font/google";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Maroon Raccoon",
@@ -9,31 +22,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body>
-        <header className="navbar">
-          <nav style={{ display: "flex", gap: "1rem", alignItems: "center", justifyContent: "center" }}>
-            <Link href="/" style={{ display: "flex", alignItems: "center"}}>
-              <Image
-                src="/MaroonRaccoonLogo.png"
-                alt="Maroon Raccoon Logo"
-                width={40}
-                height={40}
-                className="navbar-logo"
-                style={{ cursor: "pointer",
-                  height: "auto",
-                  width: "auto"
-                 }}
-              />
-            </Link>
-            <Link href="/#about">About</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
-        </header>
-
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
