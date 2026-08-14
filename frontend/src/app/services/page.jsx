@@ -39,31 +39,30 @@ export default function ServicesPage() {
   return (
     <main style={{ padding: "2rem" }}>
       <PageHero
+        eyebrow="What I offer"
         title="Services"
         subtitle="Clear options, transparent pricing, and a smooth process."
         primaryCtaLabel="Get a Quote"
         primaryCtaHref="/contact"
         image="/services/PacketConsultant_Transparent.png"
         imageAlt="Packet has many services for your website needs!"
-        imageSize="600px"
+        imageSize="480px"
       />
 
       <div style={{ maxWidth: "1200px", margin: "3rem auto", textAlign: "center" }}>
-        <h1 style={{ marginBottom: "1rem" }}>What I Offer</h1>
-        <p style={{ 
-          fontSize: "1.25rem", 
-          color: "#c6c6c6ff", 
-          maxWidth: "800px", 
-          margin: "0 auto 3rem",
-          lineHeight: "1.6"
-        }}>
-          No templates. Just easy-to-maintain, fully custom websites tailored to your needs.
-        </p>
+        <div className="section-head">
+          <h2>What I Offer</h2>
+          <p>
+            No templates. Just easy-to-maintain, fully custom websites tailored
+            to your needs.
+          </p>
+          <div className="tail-divider" aria-hidden="true" />
+        </div>
 
         {/* Services Grid */}
         <div className="services-grid">
           {services.map((service, index) => (
-            <div key={index} className="service-card">
+            <div key={index} className="card card-hover service-card">
               <h3 className="service-title">{service.title}</h3>
               <p className="service-description">{service.description}</p>
               <ul className="service-features">
@@ -76,9 +75,9 @@ export default function ServicesPage() {
         </div>
 
         {/* PDF Download Section */}
-        <div className="services-cta">
+        <div className="cta-section">
           <h2 style={{ marginBottom: "1rem" }}>Want the Full Breakdown?</h2>
-          <p style={{ fontSize: "1.1rem", marginBottom: "1.5rem", opacity: "0.9" }}>
+          <p style={{ fontSize: "1.1rem", marginBottom: "1.5rem" }}>
             Download my comprehensive services guide with detailed pricing and timelines.
           </p>
           <Link 
